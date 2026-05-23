@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毕业后，新传人都去哪了？</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+    color: #1e1e1e;
+    font-size: 15px;
+    line-height: 1.9;
+    background: #f5f0eb;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== 封面 ===== */
+  .cover {
+    background: #1c1c1c;
+    padding: 56px 36px 52px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 160px; height: 160px;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 50%;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -40px;
+    width: 200px; height: 200px;
+    border: 1px solid rgba(255,255,255,0.04);
+    border-radius: 50%;
+  }
+  .cover .overline {
+    font-size: 11px;
+    letter-spacing: 6px;
+    color: #c84b31;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+  }
+  .cover h1 {
+    font-size: 32px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.35;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 1;
+  }
+  .cover .h1-accent {
+    display: inline-block;
+    background: #c84b31;
+    color: #fff;
+    padding: 2px 12px;
+    margin-top: 6px;
+    font-size: 30px;
+  }
+  .cover .tagline {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 4px;
+    margin-top: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ===== 正文容器 ===== */
+  .wrapper {
+    background: #fff;
+    padding: 40px 28px;
+  }
+
+  /* ===== 段落 ===== */
+  p {
+    margin: 14px 0;
+  }
+
+  /* ===== 引导引语 ===== */
+  .pull-quote {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1c1c1c;
+    padding: 20px 0 20px 18px;
+    border-left: 3px solid #c84b31;
+    margin: 8px 0 24px;
+    line-height: 1.65;
+  }
+
+  /* ===== 分隔 ===== */
+  .rule {
+    text-align: center;
+    margin: 36px 0;
+    color: #d4cfc9;
+    font-size: 11px;
+    letter-spacing: 8px;
+  }
+
+  /* ===== 数据卡片 ===== */
+  .data-hero {
+    background: #faf8f5;
+    border: 1px solid #e8e3db;
+    padding: 28px 24px 22px;
+    margin: 24px 0;
+  }
+  .data-hero .mega-num {
+    font-size: 54px;
+    font-weight: 800;
+    color: #1c1c1c;
+    line-height: 1;
+    letter-spacing: -1px;
+    margin-bottom: 4px;
+  }
+  .data-hero .mega-label {
+    font-size: 13px;
+    color: #999;
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #e8e3db;
+  }
+  .data-row {
+    padding: 10px 0;
+    border-bottom: 1px dotted #e8e3db;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  .data-row:last-child { border-bottom: none; }
+  .data-row .val {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 22px;
+    color: #c84b31;
+    min-width: 64px;
+    vertical-align: middle;
+  }
+  .data-row .val.small { font-size: 18px; }
+  .data-row .txt {
+    display: inline;
+    color: #555;
+    vertical-align: middle;
+  }
+
+  /* ===== 高亮盒子 ===== */
+  .insight-box {
+    background: #fef9f2;
+    border: 1px solid #f0d9b4;
+    padding: 22px 20px;
+    margin: 28px 0;
+    font-size: 14px;
+    line-height: 1.9;
+    position: relative;
+  }
+  .insight-box::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: 20px; right: 20px;
+    height: 2px;
+    background: #c84b31;
+  }
+  .insight-box .em {
+    color: #c84b31;
+    font-weight: 600;
+  }
+
+  /* ===== 导语数字 ===== */
+  .point {
+    margin: 16px 0;
+    padding-left: 24px;
+    position: relative;
+  }
+  .point::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px;
+    width: 8px; height: 8px;
+    background: #c84b31;
+    border-radius: 1px;
+  }
+  .point .lead {
+    font-weight: 700;
+    color: #1c1c1c;
+  }
+
+  /* ===== 人物卡片 ===== */
+  .roster {
+    margin: 24px 0;
+  }
+  .person {
+    background: #faf8f5;
+    padding: 20px 20px;
+    margin: 12px 0;
+    border-left: 4px solid #ccc;
+    position: relative;
+  }
+  .person.p1 { border-left-color: #2d4a7a; }
+  .person.p2 { border-left-color: #8b5e3c; }
+  .person.p3 { border-left-color: #2d6a4f; }
+  .person .tag {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #aaa;
+    margin-bottom: 6px;
+  }
+  .person .text {
+    font-size: 15px;
+    color: #1c1c1c;
+    font-weight: 500;
+    line-height: 1.65;
+  }
+  .person .text b {
+    color: #1c1c1c;
+  }
+
+  /* ===== CTA ===== */
+  .cta {
+    background: #1c1c1c;
+    color: #fff;
+    padding: 36px 24px;
+    text-align: center;
+    margin: 36px 0 0;
+  }
+  .cta .cta-overline {
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 10px;
+  }
+  .cta .cta-main {
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 1.4;
+  }
+  .cta .cta-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 10px;
+    line-height: 1.7;
+  }
+
+  /* ===== 页脚 ===== */
+  .footer {
+    background: #f5f0eb;
+    text-align: center;
+    padding: 24px 28px 36px;
+    font-size: 11px;
+    color: #b5b0a8;
+    line-height: 2;
+    letter-spacing: 1px;
+  }
+  .footer .credit-line {
+    margin-top: 8px;
+    padding-top: 16px;
+    border-top: 1px solid #e0dbd3;
+    color: #c4bfb6;
+  }
+
+  /* 通用工具 */
+  .red { color: #c84b31; font-weight: 600; }
+  .center { text-align: center; }
+  .mt0 { margin-top: 0; }
+  .mt-lg { margin-top: 32px; }
+</style>
+</head>
+<body>
+
+<!-- ====== 封面 ====== -->
+<div class="cover">
+  <div class="overline">Journalism &amp; Communication</div>
+  <h1>毕业后，<br>新传人都去哪了？</h1>
+  <div class="tagline">新闻传播学院 &middot; 2026 视频节目制作基础课程作业</div>
+</div>
+
+<!-- ====== 正文 ====== -->
+<div class="wrapper">
+
+  <!-- 引语 -->
+  <p>「你们新闻传播专业，毕业了到底能干嘛？」</p>
+  <p>如果你也是新传学子，这句话你大概已经听了无数遍。来自亲戚的饭桌、来自出租车司机的寒暄、来自高中同学聚会上那一瞬间的沉默。</p>
+  <p>问的人未必有恶意。但这个问题背后，藏着一个微妙的前提：新闻传播，好像不是一个「有明确去处」的专业。</p>
+
+  <div class="rule">&mdash; &mdash;</div>
+
+  <p class="center" style="font-weight:600;font-size:17px;">事实呢？</p>
+
+  <!-- 数据卡片 -->
+  <div class="data-hero">
+    <div class="mega-num">769,640</div>
+    <div class="mega-label">条招聘数据 &middot; </div>
+    <div class="data-row">
+      <span class="val">1.42%</span>
+      <span class="txt">传统媒体（报纸 / 出版）用人需求占比，排名第 19 位</span>
+    </div>
+    <div class="data-row">
+      <span class="val small">7/10</span>
+      <span class="txt">前 10 职能岗位中与新传高度对口的数量</span>
+    </div>
+    <div class="data-row">
+      <span class="val small">55%</span>
+      <span class="txt">对口岗位累计占市场总需求的比例</span>
+    </div>
+  </div>
+
+  <p>与此同时，销售、行政、人力、教师等大量非传统媒体岗位也在吸纳新传毕业生。</p>
+
+  <!-- 高亮结论 -->
+  <div class="insight-box">
+    数据新闻「新闻传播是天坑？」的核心结论：<span class="em">80% 的新传学生没有从事本行业</span>——这句话说明媒体的发展拓宽了职业边界。但<span class="em">传播本身从未退场</span>，它只是换了战场。
+  </div>
+
+  <div class="rule">&mdash; &mdash;</div>
+
+  <p>数据告诉我们两件事。</p>
+
+  <div class="point">
+    <span class="lead">第一，新传人的去处，比「当记者」这三个字宽广得多。</span>互联网、广告、快消、体制内、学术深造、跨界转型——每一条路都有真实的需求在支撑。
+  </div>
+
+  <div class="point">
+    <span class="lead">第二，数据只能告诉我们「去了哪里」，不能告诉我们「为什么去」和「去了之后呢」。</span>76 真正走在路上的人，才知道每一步的重量。
+  </div>
+
+  <div class="rule">&mdash; &mdash;</div>
+
+  <p>这就是我们要做这件事的原因。</p>
+  <p>我们找到了三位今年毕业的学长。他们的去向完全不同：</p>
+
+  <!-- 人物卡片 -->
+  <div class="roster">
+    <div class="person p1">
+      <div class="tag">学术深造</div>
+      <div class="text">有人选择了<b>保研</b>，留在学术的路上继续追问。</div>
+    </div>
+    <div class="person p2">
+      <div class="tag">投身基层</div>
+      <div class="text">有人选择了<b>考公</b>，走进体制寻求另一种自我实现。</div>
+    </div>
+    <div class="person p3">
+      <div class="tag">跨界融合</div>
+      <div class="text">还有人用一年支教，从新闻跨到了法学。</div>
+    </div>
+  </div>
+
+  <p class="center" style="font-weight:700;font-size:17px;margin-top:28px;">三条完全不同的路，同一个起点。</p>
+
+</div>
+
+<!-- ====== CTA ====== -->
+<div class="cta">
+  <div class="cta-overline">5 月 27 日起 &middot; 连续三天</div>
+  <div class="cta-main">深度访谈视频</div>
+  <div class="cta-sub">每一个选择背后，都有一个真实的人，和一段不被看见的思考。</div>
+</div>
+
+<!-- ====== 页脚 ====== -->
+<div class="footer">
+  5 月 27 日 &middot; 第一个人 &middot; 即将上线
+  <div class="credit-line">
+    数据参考：中国数据新闻大赛作品<br>
+    「"新闻传播是天坑"？769640 条招聘数据告诉你是否真的如此」
+  </div>
+</div>
+
+</body>
+</html>
